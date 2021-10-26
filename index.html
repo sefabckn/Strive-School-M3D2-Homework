@@ -458,19 +458,23 @@
                         }
                     </script>
                     <script>
-                        fetch("https://deezerdevs-deezer.p.rapidapi.com/track/%7Bid%7D", https: //deezerdevs-deezer.p.rapidapi.com/search?q=eminem
+                        fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=eminem",
+                            "https: //deezerdevs-deezer.p.rapidapi.com/search?q=eminem",
 
-                        https: //deezerdevs-deezer.p.rapidapi.com/search?q=metallica
+                            "https: //deezerdevs-deezer.p.rapidapi.com/search?q=metallica",
 
-                        https: //deezerdevs-deezer.p.rapidapi.com/search?q=behemoth {
-                        "method": "GET",
-                        "headers": {
-                            "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
-                            "x-rapidapi-key": "0949e9b673msh233a091b1953aa0p196ecfjsnfabd29d81f08"
-                        }
-                        })
+                            "https: //deezerdevs-deezer.p.rapidapi.com/search?q=behemoth", {
+                                "method": "GET",
+                                "headers": {
+                                    "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+                                    "x-rapidapi-key": "0949e9b673msh233a091b1953aa0p196ecfjsnfabd29d81f08"
+                                }
+                            })
+
                         .then(response => {
-                                console.log(response);
+
+                                const rowForMusics = document.querySelector(".row")
+
                             })
                             .catch(err => {
                                 console.error(err);
