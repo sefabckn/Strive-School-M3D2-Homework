@@ -1,27 +1,38 @@
-fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem", {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
-		"x-rapidapi-key": "0949e9b673msh233a091b1953aa0p196ecfjsnfabd29d81f08"
-	}
-})
-.then(response => {
-	console.log(response);
-})
-.then((data) =>{
+album = []
+const albumList = () => {
+        fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=queen", {
+        "method": "GET",
+    })
+    .then(response => response.json())
+    .then(data =>{
+        console.log(data)
+        const obj = {title:"queen", album: data.data}
+        album.push(obj)
+        album.forEach((albumResult) => {
+            const data = albumResult.album;
+            data.forEach((result) =>{
+                const title = result.title_short;
+                const cover = result.album.cover_medium;
+                const id = result.album.id;
+                const albumInfo = { cover, title, id };
+                let row = document.querySelector('#recently-played')
+                let col = document.createElement('div')
+                col.className = 'card col-sm-6 col-md-2 px-2 py-2'
+                col.innerHTML +=
+                ` <img class="card__image" src="${cover}" />
+                <div class="card__body">
+                <div class="card__meta">
+                    <p><strong>Median</strong><span><br>${title} ${id}</span></p>
+                </div>
+                </div>`
+                row.appendChild(col)
+            })
+        })
+    })
+}
 
-    return data
 
-
-
-
-
-
-
-
-
-
-})
-.catch(err => {
-	console.error(err);
-});
+window.onload = () => {
+    document.querySelector("#album-loader").addEventListener("click", albumList)
+    
+}
